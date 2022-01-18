@@ -9,6 +9,8 @@ module.exports = {
       'tiles-pattern': "url('/src/images/oriental-tiles.png')",
       'dark-web': "url('/src/images/webb-dark.png')",
       'light-web': "url('/src/images/webb.png')",
+      'bars': "url('/src/images/bars.jpg')",
+      'blender-edit': "url('/src/images/blender-edit.jpg')",
     },
     extend: {
       colors: {

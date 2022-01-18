@@ -26,6 +26,7 @@ const Carousel = () => {
         return (
             <Link className={'carouselItems  flex flex-col items-center'}
                 to={`/coins/${coin.id}`}>
+
                 <img className='h-24 pb-3' src={coin?.image} alt={coin.name} ></img>
                 <span className='text-lg font-bold uppercase text-secondary-col'>
                     {coin?.symbol}

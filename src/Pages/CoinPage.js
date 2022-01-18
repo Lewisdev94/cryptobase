@@ -7,7 +7,10 @@ import CoinInfo from '../Components/CoinInfo'
 import ReactHtmlParser from 'react-html-parser'
 import { numberWithCommas } from '../Components/Banner/Carousel'
 
+
+
 const CoinPage = () => {
+
 
     const { id } = useParams()
     const [coin, setCoin] = useState()
@@ -22,9 +25,20 @@ const CoinPage = () => {
         fetchCoins();
     }, [])
 
+    useEffect(() => {
+        if (coin?.name === undefined) {
+            document.title = document.title
+        }
+        else {
+            document.title = coin?.name
+        }
+    });
+
+
     if (!coin) return <p>Grabbing data...</p>
 
     return (
+
         <main className='flex flex-col items-center w-full h-full text-center text-secondary-col grow bg-primary-col'>
             <div className='w-11/12 py-4 coinData'>
                 <img src={coin?.image.large} alt={coin?.name} className='w-32 h-auto mx-auto my-4' />
@@ -50,7 +64,13 @@ const CoinPage = () => {
             <CoinInfo coin={coin} />
 
         </main>
+
     )
+
 }
+
+
+
+
 
 export default CoinPage

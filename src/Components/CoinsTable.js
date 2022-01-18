@@ -64,8 +64,12 @@ const CoinsTable = () => {
                                     const profit = row.price_change_percentage_24h > 0;
                                     return (
                                         <tr className='border-2 border-collapse border-solid cursor-pointer border-zinc-900 odd:bg-zinc-100 even:bg-zinc-200'
-                                            onClick={() => navigate(`/coins/${row.id}`)}
-                                            key={row.name}>
+                                            onClick={() =>
+                                                navigate(`/coins/${row.id}`)
+
+                                            }
+
+                                            key={row.name} >
                                             <td name='name' className='flex flex-row items-center p-1 ' >
                                                 <img className='w-4 h-auto mr-1 ' src={row?.image} alt={row.name}></img>
                                                 <div className='flex flex-col'>
@@ -98,7 +102,7 @@ const CoinsTable = () => {
 
                 </div>
             }
-        </div>
+        </div >
 
     )
 }

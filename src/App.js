@@ -4,7 +4,11 @@ import Homepage from './Pages/Homepage';
 import CoinPage from './Pages/CoinPage';
 import Footer from "./Components/Footer";
 
+
+
 function App() {
+
+
 
   return (
     <BrowserRouter>
