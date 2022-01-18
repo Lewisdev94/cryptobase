@@ -16,7 +16,8 @@ module.exports = {
       colors: {
         "primary-col": "var(--primary-col)",
         "secondary-col": "var(--secondary-col)",
-        "accent-col": "var(--accent-col)"
+        "accent-col": "var(--accent-col)",
+        "light-accent-col": "var(--light-accent-col)"
       },
       transitionProperty: {
         'width': 'width'

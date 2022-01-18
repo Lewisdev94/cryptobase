@@ -11,7 +11,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, page }) => {
         <nav className='flex justify-center my-4'>
 
             <ul className='flex items-center cursor-pointer pagination'>
-                {page !== 1 && <a className='transition duration-500 ease-in-out hover:text-accent-col' onClick={() => { paginate(page - 1) }}  >{`<`}</a>}
+                {page !== 1 && <a className='transition duration-200 ease-in-out hover:text-accent-col' onClick={() => { paginate(page - 1) }}  >{`<`}</a>}
 
                 {pageNumbers.map(number => (
 

@@ -9,7 +9,7 @@ const Homepage = () => {
     })
 
     return (
-        <main>
+        <main className='flex flex-col flex-auto' >
             <Banner />
             <CoinsTable />
         </main>

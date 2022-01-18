@@ -40,69 +40,75 @@ const CoinsTable = () => {
 
 
     return (
-        <div className='flex flex-col w-11/12 pt-8 mx-auto coinTableSection text-zinc-900'>
-            <h3 className='text-2xl text-center'>Cryptocurrency by Market Cap</h3>
-            {loading ? <p>Grabbing Data...</p> :
-                <div className='mt-6 coinTable'>
-                    <input className="px-1 py-2 mb-4 border-1 border-single text-zinc-900 bg-zinc-300 border-zinc-900 " type='text' placeholder='Search coins...' name='searchBar'
-                        onChange={(e) => { setSearch(e.target.value.toLowerCase()); setPage(1) }}>
-                    </input>
+        <div className='bg-secondary-col flex flex-col flex-auto  ;'>
+            <div className='flex flex-col w-11/12 pt-8 mx-auto coinTableSection text-primary-col '>
+                <h3 className='text-2xl text-center'>Cryptocurrency by Market Cap</h3>
+                {loading ? <p>Grabbing Data...</p> :
+                    <div className='mt-6 coinTable'>
+                        <div className='box'>
+                            <input className="p-2 mb-4 .placeholder-orange-200 rounded-xl input text-zinc-900 bg-zinc-300 " type='text' placeholder='Search coins...' name='searchBar'
+                                onChange={(e) => { setSearch(e.target.value.toLowerCase()); setPage(1) }}>
+                            </input>
+                        </div>
 
-                    <div>
+                        <div>
 
-                        <table className='w-full'>
-                            <thead className=''>
-                                <tr className='border-2 border-solid border-zinc-900'>
-                                    {["Coin", "Price", "24h Change", "Market Cap"].map((heading) => (
-                                        <th className='border-2 border-collapse border-solid border-zinc-900' key={heading}>{heading}</th>
-                                    ))}
-                                </tr>
-                            </thead>
-                            <tbody className=''>
+                            <table className='w-full'>
+                                <thead className=''>
+                                    <tr className='border-solid border-primary-col'>
+                                        {["Coin", "Price", "24h Change", "Market Cap"].map((heading) => (
+                                            <th className='px-1 text-right border-collapse border-solid first:text-left border-primary-col' key={heading}>{heading}</th>
+                                        ))}
+                                    </tr>
+                                </thead>
+                                <tbody className=''>
 
-                                {currentPosts.map((row) => {
-                                    const profit = row.price_change_percentage_24h > 0;
-                                    return (
-                                        <tr className='border-2 border-collapse border-solid cursor-pointer border-zinc-900 odd:bg-zinc-100 even:bg-zinc-200'
-                                            onClick={() =>
-                                                navigate(`/coins/${row.id}`)
+                                    {currentPosts.map((row) => {
+                                        const profit = row.price_change_percentage_24h > 0;
+                                        return (
+                                            <tr className='transition duration-200 ease-in-out cursor-pointer hover:bg-light-accent-col'
+                                                onClick={() =>
+                                                    navigate(`/coins/${row.id}`)
 
-                                            }
+                                                }
 
-                                            key={row.name} >
-                                            <td name='name' className='flex flex-row items-center p-1 ' >
-                                                <img className='w-4 h-auto mr-1 ' src={row?.image} alt={row.name}></img>
-                                                <div className='flex flex-col'>
-                                                    <span className='uppercase'>{row.symbol}</span>
-                                                    {/* <span className='uppercase'>{row.name}</span> */}
-                                                </div>
-                                            </td>
-                                            <td className='p-1 text-right border-2 border-collapse border-solid border-zinc-900' name='price'>
-                                                {symbol}
-                                                {numberWithCommas(row.current_price.toFixed(2))}
-                                            </td>
-                                            <td className='p-1 text-right border-2 border-collapse border-solid border-zinc-900' style={{ color: profit > 0 ? "green" : "red" }} name='percent'>
-                                                {profit && "+"}
-                                                {row.price_change_percentage_24h.toFixed(2)}%
-                                            </td>
+                                                key={row.name} >
+                                                <td name='name' className='rounded-tl-xl rounded-bl-xl' >
+                                                    <div className='flex flex-row items-center py-2 pl-2' >
+                                                        <img className='w-4 h-auto mr-2 ' src={row?.image} alt={row.name}></img>
+                                                        <div className='flex flex-col'>
+                                                            <span className='uppercase'>{row.symbol}</span>
+                                                            {/* <span className='uppercase'>{row.name}</span> */}
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td className='text-right ' name='price'>
+                                                    {symbol}
+                                                    {numberWithCommas(row.current_price.toFixed(2))}
+                                                </td>
+                                                <td className='text-right ' style={{ color: profit > 0 ? "green" : "red" }} name='percent'>
+                                                    {profit && "+"}
+                                                    {row.price_change_percentage_24h.toFixed(2)}%
+                                                </td>
 
-                                            <td className='p-1 text-right border-2 border-collapse border-solid border-zinc-900'>
-                                                {symbol}{numberWithCommas(row.market_cap.toString().slice(0, -6))}M
-                                            </td>
+                                                <td className='pr-2 text-right rounded-tr-xl rounded-br-xl'>
+                                                    {symbol}{numberWithCommas(row.market_cap.toString().slice(0, -6))}M
+                                                </td>
 
-                                        </tr>
-                                    )
-                                })}
-                            </tbody>
-                        </table>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
+
+                        </div>
+                        {currentPosts == 0 ? <p>No matching coins.</p> :
+                            <Pagination postsPerPage={postsPerPage} totalPosts={handleSearch().length} paginate={paginate} page={page} />}
 
                     </div>
-                    {currentPosts == 0 ? <p>No matching coins.</p> :
-                        <Pagination postsPerPage={postsPerPage} totalPosts={handleSearch().length} paginate={paginate} page={page} />}
-
-                </div>
-            }
-        </div >
+                }
+            </div >
+        </div>
 
     )
 }

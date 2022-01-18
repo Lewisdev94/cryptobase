@@ -46,7 +46,7 @@ const Carousel = () => {
         }
     }
     return (
-        <div className='flex h-72'>
+        <div className='flex h-72 '>
             <AliceCarousel
                 // keyboardNavigation
                 touchTracking
