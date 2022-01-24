@@ -24,7 +24,7 @@ const CoinsTable = () => {
 
     useEffect(() => {
         fetchCoins()
-    }, [currency])
+    }, [currency]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleSearch = () => {
         return coins.filter((coin) => (
@@ -39,14 +39,15 @@ const CoinsTable = () => {
 
 
 
+
     return (
         <div className='bg-secondary-col flex flex-col flex-auto  ;'>
             <div className='flex flex-col w-11/12 pt-8 mx-auto coinTableSection text-primary-col '>
                 <h3 className='text-2xl text-center'>Cryptocurrency by Market Cap</h3>
-                {loading ? <p>Grabbing Data...</p> :
+                {loading ? <p className='mt-2'>Grabbing Data...</p> :
                     <div className='mt-6 coinTable'>
                         <div className='box'>
-                            <input className="p-2 mb-4 .placeholder-orange-200 rounded-xl input text-zinc-900 bg-zinc-300 " type='text' placeholder='Search coins...' name='searchBar'
+                            <input className="p-2 mb-4 placeholder-primary-col caret-primary-col focus:placeholder-transparent rounded-xl input text-zinc-900 bg-zinc-300 " type='text' placeholder='Search coins...' name='searchBar'
                                 onChange={(e) => { setSearch(e.target.value.toLowerCase()); setPage(1) }}>
                             </input>
                         </div>
@@ -55,9 +56,9 @@ const CoinsTable = () => {
 
                             <table className='w-full'>
                                 <thead className=''>
-                                    <tr className='border-solid border-primary-col'>
+                                    <tr className='border-solid border-primary-col '>
                                         {["Coin", "Price", "24h Change", "Market Cap"].map((heading) => (
-                                            <th className='px-1 text-right border-collapse border-solid first:text-left border-primary-col' key={heading}>{heading}</th>
+                                            <th className='px-1 text-right border-collapse border-solid last:hidden md:last:block first:text-left border-primary-col' key={heading}>{heading}</th>
                                         ))}
                                     </tr>
                                 </thead>
@@ -65,17 +66,19 @@ const CoinsTable = () => {
 
                                     {currentPosts.map((row) => {
                                         const profit = row.price_change_percentage_24h > 0;
+                                        const rowClick = () => {
+                                            navigate(`/coins/${row.id}`)
+                                            document.title = row.name
+                                        }
                                         return (
-                                            <tr className='transition duration-200 ease-in-out cursor-pointer hover:bg-light-accent-col'
-                                                onClick={() =>
-                                                    navigate(`/coins/${row.id}`)
-
+                                            <tr tabIndex="0" className='transition duration-200 ease-in-out cursor-pointer focus:bg-light-accent-col hover:bg-light-accent-col'
+                                                onClick={() => rowClick()
                                                 }
 
                                                 key={row.name} >
                                                 <td name='name' className='rounded-tl-xl rounded-bl-xl' >
                                                     <div className='flex flex-row items-center py-2 pl-2' >
-                                                        <img className='w-4 h-auto mr-2 ' src={row?.image} alt={row.name}></img>
+                                                        <img className='w-5 h-auto mr-2 ' src={row?.image} alt={row.name}></img>
                                                         <div className='flex flex-col'>
                                                             <span className='uppercase'>{row.symbol}</span>
                                                             {/* <span className='uppercase'>{row.name}</span> */}
@@ -86,12 +89,12 @@ const CoinsTable = () => {
                                                     {symbol}
                                                     {numberWithCommas(row.current_price.toFixed(2))}
                                                 </td>
-                                                <td className='text-right ' style={{ color: profit > 0 ? "green" : "red" }} name='percent'>
+                                                <td className='pr-2 text-right rounded-tr-xl rounded-br-xl md:rounded-none md:pr-0' style={{ color: profit > 0 ? "green" : "red" }} name='percent'>
                                                     {profit && "+"}
                                                     {row.price_change_percentage_24h.toFixed(2)}%
                                                 </td>
 
-                                                <td className='pr-2 text-right rounded-tr-xl rounded-br-xl'>
+                                                <td className='hidden pr-2 text-right md:table-cell rounded-tr-xl rounded-br-xl'>
                                                     {symbol}{numberWithCommas(row.market_cap.toString().slice(0, -6))}M
                                                 </td>
 
@@ -102,13 +105,13 @@ const CoinsTable = () => {
                             </table>
 
                         </div>
-                        {currentPosts == 0 ? <p>No matching coins.</p> :
+                        {currentPosts === 0 ? <p className='pl-1 mt-4 mb-6'>No matching coins.</p> :
                             <Pagination postsPerPage={postsPerPage} totalPosts={handleSearch().length} paginate={paginate} page={page} />}
 
                     </div>
                 }
             </div >
-        </div>
+        </div >
 
     )
 }

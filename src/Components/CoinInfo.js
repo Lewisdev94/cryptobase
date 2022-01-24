@@ -30,7 +30,7 @@ const CoinInfo = ({ coin }) => {
 
     const [historicData, setHistoricData] = useState();
     const [days, setDays] = useState(1)
-    const [flag, setFlag] = useState(false);
+    // const [flag, setFlag] = useState(false);
     const { currency } = CryptoState()
 
     const fetchHistoricData = async () => {
@@ -41,7 +41,7 @@ const CoinInfo = ({ coin }) => {
 
     useEffect(() => {
         fetchHistoricData()
-    }, [days])
+    }, [days]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className='w-full mb-4 chartSection'>

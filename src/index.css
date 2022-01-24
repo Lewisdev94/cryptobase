@@ -9,12 +9,22 @@
 :root {
   --primary-col: #18181b;
   --secondary-col: #fafafa;
-  --accent-col: orange;
-  --light-accent-col: rgb(255, 227, 176);
+  --accent-col: #ffa500;
+  --light-accent-col: #ffe3b0;
 }
 
 @layer base {
   .link-text a {
     color: var(--accent-col);
+  }
+
+  @media (hover: hover) {
+    .page-arrows:hover {
+      background-color: var(--accent-col);
+    }
+    .site-header:hover,
+    .footer-text:hover {
+      color: var(--accent-col);
+    }
   }
 }

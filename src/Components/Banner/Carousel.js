@@ -25,7 +25,8 @@ const Carousel = () => {
         let profit = coin.price_change_percentage_24h >= 0;
         return (
             <Link className={'carouselItems  flex flex-col items-center'}
-                to={`/coins/${coin.id}`}>
+                to={`/coins/${coin.id}`} onClick={() =>
+                    document.title = coin?.name}>
 
                 <img className='h-24 pb-3' src={coin?.image} alt={coin.name} ></img>
                 <span className='text-lg font-bold uppercase text-secondary-col'>

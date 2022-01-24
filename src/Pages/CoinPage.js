@@ -25,17 +25,8 @@ const CoinPage = () => {
         fetchCoins();
     }, [])
 
-    useEffect(() => {
-        if (coin?.name === undefined) {
-            document.title = document.title
-        }
-        else {
-            document.title = coin?.name
-        }
-    });
 
-
-    if (!coin) return <p>Grabbing data...</p>
+    if (!coin) return <p className='text-secondary-col'>Grabbing data...</p>
 
     return (
 

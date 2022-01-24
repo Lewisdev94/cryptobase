@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <header className='flex justify-center bg-primary-col header '>
             <div className='flex items-center justify-between w-11/12 py-4 innerHeader'>
-                <h1 onClick={() => navigate("/")} className="text-3xl font-light transition duration-200 ease-in-out cursor-pointer text-zinc-50 hover:text-accent-col">CryptoBase </h1>
+                <h1 onClick={() => navigate("/")} className="text-3xl font-light transition duration-200 ease-in-out cursor-pointer site-header text-zinc-50 ">CryptoBase </h1>
                 <div className='currencySelector' >
                     <label className='currencySelect' htmlFor="currencySelect"></label>
                     <select className='px-2 text-xl cursor-pointer bg-secondary-col select text-zinc-900' id='currencySelect'
