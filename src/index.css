@@ -14,6 +14,35 @@
 }
 
 @layer base {
+  @media screen and (min-width: 768px) {
+    .carousel {
+      mask-image: -moz-linear-gradient(
+        left,
+        rgba(30, 87, 153, 0.01) 0%,
+        rgba(30, 87, 153, 0.12) 1%,
+        rgba(30, 87, 153, 1) 9%,
+        rgba(30, 87, 153, 1) 92%,
+        rgba(30, 87, 153, 0) 100%
+      ); /* FF3.6-15 */
+      mask-image: -webkit-linear-gradient(
+        left,
+        rgba(30, 87, 153, 0.01) 0%,
+        rgba(30, 87, 153, 0.12) 1%,
+        rgba(30, 87, 153, 1) 9%,
+        rgba(30, 87, 153, 1) 92%,
+        rgba(30, 87, 153, 0) 100%
+      ); /* Chrome10-25,Safari5.1-6 */
+      mask-image: linear-gradient(
+        to right,
+        rgba(30, 87, 153, 0.01) 0%,
+        rgba(30, 87, 153, 0.12) 1%,
+        rgba(30, 87, 153, 1) 9%,
+        rgba(30, 87, 153, 1) 92%,
+        rgba(30, 87, 153, 0) 100%
+      ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    }
+  }
+
   .link-text a {
     color: var(--accent-col);
   }
@@ -23,7 +52,9 @@
       background-color: var(--accent-col);
     }
     .site-header:hover,
-    .footer-text:hover {
+    .site-header:focus,
+    .footer-text:hover,
+    .footer-text:focus {
       color: var(--accent-col);
     }
   }

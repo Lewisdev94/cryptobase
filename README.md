@@ -15,6 +15,9 @@ CryptoBase is a cryptocurrency dashboard built in React and uses Tailwind stylin
 - Switchable currencies
 
 ## Implemented Updates
+- Media queries added for desktop site (25/01/2022)
+- Added fade out effect as carousel slides out and in (25/01/2022)
+- Corrected some focus states and tabbing issues for accessibility (25/01/2022)
 - Link to portfolio opens in new tab (24/01/2022)
 - Favicons added (24/01/2022)
 - Coin table is now tabbable (24/01/2022)
@@ -28,7 +31,7 @@ CryptoBase is a cryptocurrency dashboard built in React and uses Tailwind stylin
 - Restyled the main coins table (18/01/2022)
 - Restyled the search input box (18/01/2022)
 ## Updates Pending
-- Build desktop version of site
+
 - Loading animations while API calls
 - Meta data
 - Axis label change

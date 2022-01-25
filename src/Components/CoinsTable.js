@@ -42,7 +42,7 @@ const CoinsTable = () => {
 
     return (
         <div className='bg-secondary-col flex flex-col flex-auto  ;'>
-            <div className='flex flex-col w-11/12 pt-8 mx-auto coinTableSection text-primary-col '>
+            <div className='flex flex-col w-11/12 pt-8 mx-auto md:max-w-6xl coinTableSection text-primary-col '>
                 <h3 className='text-2xl text-center'>Cryptocurrency by Market Cap</h3>
                 {loading ? <p className='mt-2'>Grabbing Data...</p> :
                     <div className='mt-6 coinTable'>
@@ -72,8 +72,12 @@ const CoinsTable = () => {
                                         }
                                         return (
                                             <tr tabIndex="0" className='transition duration-200 ease-in-out cursor-pointer focus:bg-light-accent-col hover:bg-light-accent-col'
-                                                onClick={() => rowClick()
-                                                }
+                                                onClick={() => rowClick()} onKeyPress={event => {
+                                                    if (event.key === 'Enter') {
+                                                        rowClick()
+                                                    }
+                                                }}
+
 
                                                 key={row.name} >
                                                 <td name='name' className='rounded-tl-xl rounded-bl-xl' >

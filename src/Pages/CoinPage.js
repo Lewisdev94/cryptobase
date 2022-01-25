@@ -12,13 +12,19 @@ import { numberWithCommas } from '../Components/Banner/Carousel'
 const CoinPage = () => {
 
 
+
     const { id } = useParams()
     const [coin, setCoin] = useState()
     const { currency, symbol } = CryptoState()
 
     const fetchCoins = async () => {
-        const { data } = await axios.get(SingleCoin(id));
-        setCoin(data);
+        try {
+            const { data } = await axios.get(SingleCoin(id));
+            setCoin(data);
+        }
+        catch (error) {
+            window.location.href = '/'
+        }
     }
 
     useEffect(() => {
@@ -26,12 +32,12 @@ const CoinPage = () => {
     }, [])
 
 
-    if (!coin) return <p className='text-secondary-col'>Grabbing data...</p>
+    if (!coin) return <p className='w-11/12 mx-auto md:max-w-6xl text-secondary-col'>Grabbing data...</p>
 
     return (
 
-        <main className='flex flex-col items-center w-full h-full text-center text-secondary-col grow bg-primary-col'>
-            <div className='w-11/12 py-4 coinData'>
+        <main className='flex flex-col items-center w-11/12 h-full mx-auto text-center md:items-start md:flex-row text-secondary-col grow bg-primary-col md:mt-8 md:max-w-screen-2xl'>
+            <div className='w-full py-4 md:w-2/6 coinData md:pr-8 '>
                 <img src={coin?.image.large} alt={coin?.name} className='w-32 h-auto mx-auto my-4' />
                 <h2 className='mb-4 text-3xl text-secondary-col'>{coin?.name}</h2>
                 {coin?.description.en &&

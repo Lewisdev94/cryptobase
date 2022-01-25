@@ -44,9 +44,9 @@ const CoinInfo = ({ coin }) => {
     }, [days]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <div className='w-full mb-4 chartSection'>
+        <div className='w-full mb-4 md:w-4/6 chartSection md:border-l border-secondary-col md:pl-8 '>
             {historicData && (
-                <div className='relative w-11/12 mx-auto mb-4 h-96 chart'>
+                <div className='relative w-11/12 mx-auto mb-4 md:w-full h-96 chart'>
                     <Line
                         data={{
                             labels: historicData.map((coin) => {

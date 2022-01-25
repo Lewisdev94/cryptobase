@@ -24,7 +24,7 @@ const Carousel = () => {
     const items = trending.map((coin) => {
         let profit = coin.price_change_percentage_24h >= 0;
         return (
-            <Link className={'carouselItems  flex flex-col items-center'}
+            <Link tabIndex='-1' aria-hidden="true" className={'carouselItems  flex flex-col items-center'}
                 to={`/coins/${coin.id}`} onClick={() =>
                     document.title = coin?.name}>
 
@@ -44,10 +44,14 @@ const Carousel = () => {
         },
         512: {
             items: 3
+        },
+        768: {
+            items: 4
         }
     }
     return (
-        <div className='flex h-72 '>
+        <div className='flex w-full mx-auto md:max-w-6xl h-72 carousel'>
+
             <AliceCarousel
                 // keyboardNavigation
                 touchTracking
@@ -61,6 +65,7 @@ const Carousel = () => {
                 items={items}
             />
         </div>
+
 
     )
 }
